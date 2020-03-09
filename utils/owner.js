@@ -108,7 +108,7 @@ var catogories = {
     ]
 }
 
-var owner = {
+var owners = {
     "110100": [
         {
             "category": "机械",
@@ -225,5 +225,5 @@ var owner = {
 module.exports = {
     catogories,
     stages,
-    owner,
+    owners,
 }

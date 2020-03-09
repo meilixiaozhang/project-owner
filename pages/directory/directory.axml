@@ -1,0 +1,31 @@
+<!--directory.axml-->
+<view class="container">
+  <view style="position:fixed ;top:40%;box-sizing:border-box;padding:20rpx;text-align:center;width:100%">
+    <view style="padding-bottom:20rpx">{{ownerInfo}}</view>
+    <button bindtap="selectDistrict">选择负责人</button>
+  </view>
+</view>
+<view class="dialog-mask " style="z-index:11;visibility:{{principalMenuIsShow ? 'visible': 'hidden'}}" bindtap="hideCitySelected" />
+<!--负责人三级联动-->
+<!--使用动画时不能a:if="{{city.length>0&&isVisible}}" ，不能hidden=''属性否则无动画效果-->
+<view class="picker-view" animation="{{animationPrincipalMenu}}" style="visibility:{{ownerMenuIsShow ? 'visible':'hidden'}}">
+  <view style="height:10% ;width:95%;margin-top:10rpx">
+    <text catchtap="cityCancel">取消</text>
+    <text style="float: right" catchtap="citySure">确定</text>
+  </view>
+  <!--"可以显示默认的城市，使用后级联选择城市反应很慢就不使用了-->
+  <picker-view style="width: 100%; height: 300px;" bindchange="categoryChange" value="{{value}}" a:key="">
+    <picker-view-column>
+      <view wx:for="{{stages}}" class="picker-item">
+        {{item.name}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view a:for="{{categories}}" class="picker-item" a:key="">
+        {{item.name}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view a:for="{{owners}}" class="picker-item" a:key="">
+        {{item.name}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
