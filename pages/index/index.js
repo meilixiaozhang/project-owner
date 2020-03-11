@@ -1,48 +1,38 @@
-var app = getApp()
+import { rawOwnersData } from './owner'; // 导入城市数据
 
 Page({
   data: {
-    motto: "Hello World",
-    userInfo: {}
+    selectValue: '', // 选择的值
+    selectShow: false, // 是否显示级联组件
+    rawOwnersData: rawOwnersData // mock的级联数据
   },
-
-  bindViewTap() {
-    a.navigateTo({
-      url:"../logs/logs"
-    })
+  /**
+   * 点击输入框显示级联组件
+   * @method openSelect
+   */
+  openSelect() {
+    this.setData({ selectShow: true });
   },
-
-  onLoad() {
-    // 页面加载
-    console.log('onLoad')
+  /**
+   * 关闭级联组件
+   * @method closeSelect
+   */
+  closeSelect() {
+    this.setData({ selectShow: false });
   },
-  onReady() {
-    // 页面加载完成
-  },
-  onShow() {
-    // 页面显示
-  },
-  onHide() {
-    // 页面隐藏
-  },
-  onUnload() {
-    // 页面被关闭
-  },
-  onTitleClick() {
-    // 标题被点击
-  },
-  onPullDownRefresh() {
-    // 页面被下拉
-  },
-  onReachBottom() {
-    // 页面被拉到底部
-  },
-  onShareAppMessage() {
-    // 返回自定义分享信息
-    return {
-      title: '宝洁南部调试',
-      desc: '问题责任人管理',
-      path: 'pages/index/index',
-    };
-  },
+  /**
+   * 点击确认触发的事件
+   * @method onSelectSuccess
+   * @param {*} result
+   */
+  onSelectSuccess(result) {
+    let selectValue = '';
+    result && result.map((item) => {
+      selectValue += item.name + ' ';
+    });
+    if (selectValue.length > 0) {
+      selectValue = selectValue.substr(0, selectValue.length - 1);
+    }
+    this.setData({ selectValue });
+  }
 });

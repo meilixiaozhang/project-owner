@@ -1,3 +1,6 @@
 {
-    
+  "defaultTitle": "宝洁南部调试记录",
+  "usingComponents": {
+    "multi-select": "/components/select/index"
+  }
 }

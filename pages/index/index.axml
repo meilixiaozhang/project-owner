@@ -1,10 +1,10 @@
-<!--index.axml-->
-<view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+<view class="page atd-multi-select">
+  <view class="page-description">SND  
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="page-section" onTap="openSelect">
+    <input name="input" disabled placeholder="阶段  类目  负责人" value="{{selectValue}}" class="select-input"/>
   </view>
 </view>
+<!--级联选择器-->
+<multi-select selectShow="{{selectShow}}" selectValue="{{selectValue}}" list="{{rawOwnersData}}" onSelectSuccess="onSelectSuccess" onClose="closeSelect"/>
+<!---->
